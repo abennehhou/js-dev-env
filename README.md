@@ -56,3 +56,18 @@ Example: Atom, WebStorm, Brackets, VSCode
 * install localtunnel globally: `npm install localtunnel -g`
 * start server `node buildScripts\srcServer.js`
 * `lt --port 3000 --subdomain mysubdomain` (subdomain is optional)
+
+## Automation
+
+Tools to automate dev environment, build process. most popular: grunt, gulp, npm scripts
+* grunt: first popular (original), configuration over code (json gruntfile), writes intermediary files between steps, plugins
+* gulp: in memory streams (no need to write to disk), fast, code based (gulpfile), plugins
+* npm scripts: in package.json file, leverage OS command line, directly use npm packages, call separate node scripts, pre/post hooks, simplicity, no need for separate plugins, easier to debug, better docs, easier to learn
+
+### npm scripts
+
+See `scripts` section in `package.json` file.
+* scripts with pre prefix run before, post run after. example: prestart -> start -> poststart
+* to run a script, use `npm run`. example: `npm run security-check`. No need to use _run_ for start and test scripts.
+* packages can be referenced directly, as they are all in _.bin_ folder, so no need to install a package globally.
+* use `npm-run-all` to run many tasks, `--parallel` is optional.
