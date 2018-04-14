@@ -91,3 +91,58 @@ Popular transpilers: babel, typescript, Elm. https://github.com/jashkenas/coffee
 * Preset: a set of plugins used to support particular language features. each preset is in different node packages
   * babel-preset-es2015-node: Version detection: automatically determines which version of node is used, https://www.npmjs.com/package/babel-preset-es2015-node
   * babel-preset-latest-minimal: Feature detection, includes only needed ES2015+ plugins, https://www.npmjs.com/package/babel-preset-latest-minimal
+
+## Bundling
+
+* Combine all files into one big file (or a few files) to reduce the nb of requests
+
+### Module formats
+
+* IIFE
+```
+(function() {
+  //my code here
+})();
+```
+* Asynchronous Module Definition (AMD)
+```
+define([‘jq’], function(jq) {});
+```
+* CommonJS (CJS)
+```
+var jquery = require(‘jquery’)
+```
+* Universal Module Definition (UMD)
+* ES6 Modules
+```
+import jQuery from ‘jquery’
+```
+
+### ES6
+
+* module standard
+* statically analyzable: improved autocomplete from each imported module
+* tree shaking: dead code elimination
+* Easy to read
+* named imports and default exports
+
+### Bundlers
+
+* RequireJS: first popular bundler, used for AMD, 
+* Browserify: simple, bundles npm packages for the web, plugin ecosystem.
+* Webpack: comprehensive, bundles more than js (css, images, html, etc), hot-reloading, bundle splitting, tree shaking in webpack 2
+* Rollup: tree shaking, performance, new
+* JSPM: uses SystemJS (universal module loader) and rollup, runtime loader, own package manager
+
+### Webpack
+
+Example
+* Webpack config file: see `webpack.config.dev.js` file
+* Referenced webpack config in `srcServer.js` file.
+* Reference the `bundle.js` file in `index.html` file.
+* Create `index.js` file (used as webpack entry) and reference a css file
+
+### Source Maps
+
+* Map transpiled and bundled code back to the original code, only downloaded when developer tools are opened, no additional cost to regular users.
+Example if you use `debugger;` in the code.
