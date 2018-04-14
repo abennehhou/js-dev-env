@@ -71,3 +71,23 @@ See `scripts` section in `package.json` file.
 * to run a script, use `npm run`. example: `npm run security-check`. No need to use _run_ for start and test scripts.
 * packages can be referenced directly, as they are all in _.bin_ folder, so no need to install a package globally.
 * use `npm-run-all` to run many tasks, `--parallel` is optional.
+
+## Transpiling
+
+* ECMAScript versions: from ES1 (1997), ES5 (2009), ES6 (2015) with many features, then yearly.
+* Javascript Transpiler: produces a code in js from a source code in another language.
+Popular transpilers: babel, typescript, Elm. https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js
+
+* TypeScript: superset of JavaScript with additional features, type safety, enhanced autocompletion and readability, safer refactoring
+* Babel: use all new features in js, even experimental, with consistent coding style, transpiles down to ES5, ES6 imports are statically analyzable
+* Elm: own language with clear syntax, compiles down to js, compile-time errors, interops with js
+
+### Babel
+
+* Can be configured using a `.babelrc` file (not npm specific, easy to read) or in the `packages.json` file (all in one file, in "babel" section). Run using `babel-node` instead of `node`.
+
+* Stage-X (experimental presets) are subject to change and need plugins to run, from stage-0 (idea) to stage-4 (finished). Additional info here: https://babeljs.io/docs/plugins/
+
+* Preset: a set of plugins used to support particular language features. each preset is in different node packages
+  * babel-preset-es2015-node: Version detection: automatically determines which version of node is used, https://www.npmjs.com/package/babel-preset-es2015-node
+  * babel-preset-latest-minimal: Feature detection, includes only needed ES2015+ plugins, https://www.npmjs.com/package/babel-preset-latest-minimal
