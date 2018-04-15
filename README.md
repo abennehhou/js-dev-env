@@ -146,3 +146,32 @@ Example
 
 * Map transpiled and bundled code back to the original code, only downloaded when developer tools are opened, no additional cost to regular users.
 Example if you use `debugger;` in the code.
+
+## Linting
+
+* Enforce consistency. Example: curly brace position, confirm vs alert, trailing commas, use of globals and eval
+* Avoid mistakes. Example: overwriting function, use of debugger / console.log
+* Linters: JSLint, JSHint (more configurable JSLint), ESLint (became the standard), TSLint (for TypeScript)
+
+### ESLint
+
+* Supports ES6 and ES7 natively
+* Configuration: in a dedicated file on in `package.json` file in "eslintConfig" section. Many available config file formats (see https://eslint.org/docs/2.0.0/user-guide/configuring#configuration-file-formats)
+* List of available rules: https://eslint.org/docs/rules/
+* For each rule: warning VS error
+* Many plugins available. See: https://github.com/dustinspecker/awesome-eslint
+* Use a preset to avoid starting from scratch? Can use recommended rules or an existing set of rules
+* watch files:
+  * eslint-loader: Re-lints all files upon save, used with webpack.
+  * eslint-watch: adds file watch, with better warning/error formatting, clean message, can lint tests and build scripts too
+* Use Babel-eslint ito support experimental JavaScript features (stage 0 - 4 features)
+
+#### Setup
+
+* See `.eslintrc.json` file: recommended rules are used, import plugins to check invalid imports, ES7 used with standard javascript modules, overridden rule (value 0: off, 1: warning, 2: error)
+* Changes in `packages.json` file
+  * Use eslint watch package: `"lint": "esw webpack.config.* src buildScripts --color"`, run `npm run lint` and check output
+  * To watch files, `"lint:watch":"npm run lint -- --watch"`
+  * To run eslint watch when we start the app, add `lint:watch` to start section
+* To disable a rule in a file, add `/*eslint-disable no-console*/`
+* To disable a rule in a line, add `//eslint-disable-line no-console`
