@@ -175,3 +175,38 @@ Example if you use `debugger;` in the code.
   * To run eslint watch when we start the app, add `lint:watch` to start section
 * To disable a rule in a file, add `/*eslint-disable no-console*/`
 * To disable a rule in a line, add `//eslint-disable-line no-console`
+
+## Testing and Continuous Integration
+
+* Unit tests: test single function or module, in isolation, fast, to run automatically
+* Integration tests: test interactions between modules, without mocks, slow, to run on demand
+* UI tests: tests with UI automation (ex: selenium)
+
+* Testing framework
+  * Most popular: Mocha (most used, flexible, need assertion library), Jasmine (everything integrated). Other: Tape, QUnit, AVA, Jest
+* Assertion library
+  * Library to verify assertions: declare what is expected. example: chai, should.js, expect
+* Helper libraries
+  * JSDOM: implementation browser's DOM using node, run DOM-related tests without a browser
+  * Cheerio: implementation of jQuery for the server, query using jQuery selectors
+* Where to run tests
+  * Browser: karma, testem
+  * headless browser: phantomJS
+  * in-memory DOM: JSDOM
+* Where to place tests
+  * Centralized: less _noise_ in src folder, no deployment confusion, need to recreate folder structure
+  * Alongside: easier imports, move, visibility
+* When to run tests
+  * unit tests: upon save
+
+### Setup
+
+* See `testSetup.js` file
+  * babel should transpile the tests before mocha runs them.
+  * disable webpack specific features
+* See "test" section in `packages.json` file
+  * Choose reporter to use https://mochajs.org/#reporters
+  * Run test setup
+  * Choose tests to run
+* See "test:watch" section to run upon save
+* Add to "start" section to run when the app starts.
