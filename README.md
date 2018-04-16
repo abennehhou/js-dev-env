@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/abennehhou/js-dev-env.svg?branch=master)](https://travis-ci.org/abennehhou/js-dev-env)
+[![Build status](https://ci.appveyor.com/api/projects/status/0fb177y1sm164lag?svg=true)](https://ci.appveyor.com/project/abennehhou/js-dev-env)
+
 
 # Javascript Developement environment
 Setup javascript development environment.
