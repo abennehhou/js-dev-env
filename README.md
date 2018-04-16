@@ -210,3 +210,8 @@ Example if you use `debugger;` in the code.
   * Choose tests to run
 * See "test:watch" section to run upon save
 * Add to "start" section to run when the app starts.
+
+### Continuous Integration
+
+* For travis: see `.travis.yml` file, more details: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+* For appveyor: see `appveyor.yml` file, more details: https://www.appveyor.com/docs/lang/nodejs-iojs/
