@@ -5,7 +5,7 @@
 # Javascript Developement environment
 Setup javascript development environment.
 
-Base on Pluralsight course: https://app.pluralsight.com/library/courses/javascript-development-environment/
+Based on Pluralsight course: https://app.pluralsight.com/library/courses/javascript-development-environment/
 
 ## Editor
 
@@ -219,3 +219,18 @@ Example if you use `debugger;` in the code.
 
 * For travis: see `.travis.yml` file, more details: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 * For appveyor: see `appveyor.yml` file, more details: https://www.appveyor.com/docs/lang/nodejs-iojs/
+
+## HTTP Calls
+
+* Node: http (basic), request (higher level)
+* Browser:XMLHttpRequest (old), jQuery, native in framework (ex: in angular), fetch (use polyfill to support all browsers, but send it only to browsers for which it is needed)
+* Node and browser: isomorphic-fetch, xhr, SuperAgent, Axios
+
+* Centralize Api calls
+
+* Mock Http: testing, prototyping, offline
+  * Nock: mock in the tests, use url for http requests
+  * Static JSON
+  * Create development webserver: api-mock, JSON server, JSON Schema faker, Browsersync, Express, etc.
+  Fake data libraries: faker.js, chance.js, randexp.js
+  
