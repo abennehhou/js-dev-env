@@ -233,4 +233,34 @@ Example if you use `debugger;` in the code.
   * Static JSON
   * Create development webserver: api-mock, JSON server, JSON Schema faker, Browsersync, Express, etc.
   Fake data libraries: faker.js, chance.js, randexp.js
-  
+
+## Tips
+
+* put javascript in js file: do not generate javascript, generate json instead. No javascript inline in html file, otherwise, we will loose all the benefits of linting, testing, ES6, etc
+* organize by feature for large projects instead of file type
+* extract logic to Plain Old Javascript Objects (POJO), not specific to a framework, easier to test and reusable
+
+## Production build
+
+* Minification to: speed page load, save bandwidth: shortens variable and function names, removes comments, whitespaces, tree-shaking, debug via sourcemap
+* Generate html dynamically to: reference bundles automatically, with dynamic names, inject production only resources (ex: error logging), minify html
+* Bundle splitting to: speed initial page load, avoid re-downloading all libraries, save bandwidth
+* Cache busting to: avoid doing unnecessary HTTP requests (using expiration headers), force request for latest version when the app is updated. To do so: hash the file name, and generate the html dynamically.
+
+#### Setup
+
+* Create a `webpack.config.prod.js` file (duplicated from `webpack.config.dev.js`)
+* Use devtool: 'source-map' (recommended for prod, to see source map even if it is minified, transpiled and bundled)
+* The output is in _dist_ folder
+* Use webpack _DedupePlugin_ to remove duplicates, and _UglifyJsPlugin_ to minify.
+* See _build.js_ file: script to run production webpack config build
+* See _distServer.js_, to run production version of the app in the local machine (not for production use!), created from _srcServer.js_ file, but without interaction with webpack, it serves only static files instead. Enable gzip compression.
+* See _baseUrl.js_: use a query parameter to use the mock api or the real api.
+* Use webpack _HtmlWebpackPlugin_ to generate html file and inject scripts (in both dev and prod webpack configs) and minify in prod config
+* See _package.json_ to automate production build process:
+  * Clean dist folder, run test, lint the code, run the build, then start dist server.
+  * Run `npm run build` to test it
+* Bundle splitting: split entry to _main_ and _vendor_, use webpack _CommonsChunkPlugin_ to create a separate bundle for vendor libraries, change the output file name to a placeholder.
+* Cache busting: use _WebpackMd5Hash_ plugin and update output file name format: the file name will change only when the code changes.
+* Generate a separate css file for production with minification, cache busting and source map: use _ExtractTextPlugin_ webpack plugin and update css loader.
+* Error logging: it should include error Metadata (browser, stack trace, previous actions, custom API for enhanced tracking), notifications & integrations, analytics and filtering. Example: TrackJS, Sentry, New Relic, Raygun
