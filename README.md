@@ -264,3 +264,8 @@ Example if you use `debugger;` in the code.
 * Cache busting: use _WebpackMd5Hash_ plugin and update output file name format: the file name will change only when the code changes.
 * Generate a separate css file for production with minification, cache busting and source map: use _ExtractTextPlugin_ webpack plugin and update css loader.
 * Error logging: it should include error Metadata (browser, stack trace, previous actions, custom API for enhanced tracking), notifications & integrations, analytics and filtering. Example: TrackJS, Sentry, New Relic, Raygun
+
+## Production deploy
+
+* Separate the UI from the API: separate concerns (can be different teams and tech), scale back-end separately, cheap UI hosting: can be served via a CDN, use the API tech you like
+* Cloud hosting examples: aws, azure, heroku, firebase, google cloud platform, pubstorm. For static files only: github and surge. To deploy: `npm run deploy`
