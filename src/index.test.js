@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import fs from 'fs';
-import jsdom from 'jsdom';
+import { jsdom } from 'jsdom/lib/old-api.js';
 
 describe('Our first test', () => {
   it('Should pass', () => {

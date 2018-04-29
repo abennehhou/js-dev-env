@@ -1,5 +1,19 @@
 {
   "presets": [
-    "latest"
-  ]
+    "env"
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "env",
+          {
+            "es2015": {
+              "modules": false
+            }
+          }
+        ]
+      ]
+    }
+  }
 }
